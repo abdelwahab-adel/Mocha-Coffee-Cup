@@ -990,7 +990,7 @@ main,header,footer,section{position:relative;z-index:2}
   box-shadow:0 14px 30px rgba(92,58,35,.32);
   border:2px solid rgba(255,255,255,.3);
 }
-.barista-card h3{font-family:var(--display);font-size:1.45rem;margin:0 0 4px;font-variation-settings:"SOFT" 30}
+.barista-card h3{color: #0a0604; font-family:var(--display);font-size:1.45rem;margin:0 0 4px;font-variation-settings:"SOFT" 30}
 .barista-card .role{color:var(--gold-deep);font-size:.74rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px}
 .barista-card p{font-size:.9rem;color:var(--clay);margin:0 0 6px;line-height:1.5}
 
@@ -1320,7 +1320,7 @@ main,header,footer,section{position:relative;z-index:2}
   .parallax-lite{background-attachment:scroll}
   .back-top{bottom:88px}
   .scroll-indicator{display:none}
-  .alchemy .steam-anim{display:none}
+  /* .alchemy .steam-anim{display:none} */
   .section{padding:64px 0}
   .timeline{padding-left:24px}
 }

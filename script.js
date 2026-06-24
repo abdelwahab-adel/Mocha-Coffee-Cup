@@ -82,7 +82,7 @@ const PRODUCTS_RAW=[
 {id:'cappuccino',name:'Cappuccino',desc:'Espresso, steamed milk, microfoam. Equal parts, served warm.',price:4.25,cat:'milk',notes:['Balanced','Warm'],rating:4.8,badge:'Popular'},
 {id:'flat-white',name:'Flat White',desc:'Ristretto, silky milk, no foam ceremony. Intensely comforting.',price:4.50,cat:'milk',notes:['Intense','Silky'],rating:4.8},
 {id:'latte',name:'House Latte',desc:'Espresso, steamed milk, a small pour of raw honey on request.',price:4.75,cat:'milk',notes:['Smooth','Honey'],rating:4.6},
-{id:'caramel-latte',name:'Caramel Latte',desc:'Drizzled caramel, smooth espresso, velvety steamed milk.',price:4.50,cat:'cold',notes:['Caramel','Silky'],rating:4.9,badge:'Bestseller'},
+{id:'caramel-latte',name:'Caramel Latte ice',desc:'Drizzled caramel, smooth espresso, velvety steamed milk.',price:4.50,cat:'cold',notes:['Caramel','Silky'],rating:4.9,badge:'Bestseller'},
 {id:'mocha',name:'Mocha',desc:'Espresso, dark cocoa, milk. For the moments you want dessert.',price:5.00,cat:'milk',notes:['Cocoa','Richer'],rating:4.8},
 {id:'americano',name:'Americano',desc:'Hot water meets espresso, bold and clean. The purist\'s choice.',price:3.00,cat:'espresso',notes:['Clean','Long'],rating:4.5},
 {id:'v60',name:'V60 Pour Over',desc:'Single-origin, brewed by hand. The clearest expression of origin.',price:4.75,cat:'brew',notes:['Single origin','Clean'],rating:4.9},
@@ -123,7 +123,7 @@ const PRODUCTS = PRODUCTS_RAW.map(p => ({ ...p, img: resolveImg(p) }));
 
 const BESTSELLERS=[['gold-standard','01','2,400','Double ristretto, oat milk, raw honey, orange peel.'],['bond-street','02','1,980','Shaken espresso, vanilla bean, cream floated on top.'],['cold-brew','03','1,640','Steeped 18 hours. The bar standard for an iced coffee.'],['flat-white','04','1,390','Ristretto, silky milk. The drink our baristas drink.'],['caramel-latte','05','2,400+','A silky caramel dream from the second concept.']];
 
-const GALLERY=[['https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=85&w=900','The morning ritual · 06/2025'],['https://images.unsplash.com/photo-1515442261307-684878a531e2?auto=format&fit=crop&q=85&w=700','Hasami ceramic · 11/2024'],['https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=85&w=700','Beans · 03/2025'],['https://images.unsplash.com/photo-1579888944880-d98341148733?auto=format&fit=crop&q=85&w=700','The pull · 09/2024'],['https://images.unsplash.com/photo-1559525839-b184a4d69d5f?auto=format&fit=crop&q=85&w=900','The shelf · 02/2025'],['https://images.unsplash.com/photo-1582298538104-fc763755a104?auto=format&fit=crop&q=85&w=700','Roast day · 04/2025'],['https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=85&w=700','The window · 07/2024']];
+const GALLERY=[['https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=85&w=900','The morning ritual · 06/2025'],['https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=85&w=700','Beans · 03/2025'],['https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=85&w=700','The window · 07/2024']];
 
 const IG=['https://images.unsplash.com/photo-1531441802565-2948024f1b22?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1761271046396-97d231b59dd7?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1756382955872-a0a4dcf96007?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1712251769294-16163363ebef?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1676506739319-70bff65bfc48?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1668095736406-3131fa7ade05?auto=format&fit=crop&q=80&w=420'];
 
@@ -137,16 +137,16 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s),money=n=
 /* ===== Renderers ===== */
 function renderMenu(filter='all'){
   const items=filter==='all'?PRODUCTS:PRODUCTS.filter(p=>p.cat===filter);
-  $('#menuGrid').innerHTML=items.map(p=>`<article class="menu-card reveal" data-cat="${p.cat}"><div class="menu-img"><img src="${p.img}" alt="${p.name}" loading="lazy" decoding="async">${p.badge?`<span class="badge">${p.badge}</span>`:''}<button class="menu-quick" data-add="${p.id}" aria-label="Quick add ${p.name}">+</button></div><div class="menu-body"><div class="menu-top"><h3>${p.name}</h3><span class="rating">★ ${p.rating.toFixed(1)}</span></div><p>${p.desc}</p><div class="notes">${p.notes.map(n=>`<span>${n}</span>`).join('')}</div><div class="menu-foot"><span class="price">${money(p.price)}</span><button class="add-btn" aria-label="Add ${p.name}" data-add="${p.id}">+</button></div></div></article>`).join('');
+  $('#menuGrid').innerHTML=items.map(p=>`<article class="menu-card reveal" data-cat="${p.cat}"><div class="menu-img"><img src="imags/${p.id}.png" alt="${p.name}" loading="lazy" decoding="async">${p.badge?`<span class="badge">${p.badge}</span>`:''}<button class="menu-quick" data-add="${p.id}" aria-label="Quick add ${p.name}">+</button></div><div class="menu-body"><div class="menu-top"><h3>${p.name}</h3><span class="rating">★ ${p.rating.toFixed(1)}</span></div><p>${p.desc}</p><div class="notes">${p.notes.map(n=>`<span>${n}</span>`).join('')}</div><div class="menu-foot"><span class="price">${money(p.price)}</span><button class="add-btn" aria-label="Add ${p.name}" data-add="${p.id}">+</button></div></div></article>`).join('');
   observeReveals();
 }
 
 function renderOrder(){
-  $('#orderList').innerHTML=PRODUCTS.map(p=>`<article class="order-item"><img src="${p.img}" alt="${p.name}" loading="lazy"><div><h4>${p.name}</h4><p>${p.desc.split('.')[0]}.</p></div><button class="btn btn-outline" data-add="${p.id}">${money(p.price)}</button></article>`).join('');
+  $('#orderList').innerHTML=PRODUCTS.map(p=>`<article class="order-item"><img src="imags/${p.id}.png" alt="${p.name}" loading="lazy"><div><h4>${p.name}</h4><p>${p.desc.split('.')[0]}.</p></div><button class="btn btn-outline" data-add="${p.id}">${money(p.price)}</button></article>`).join('');
 }
 
 function renderBest(){
-  $('#bestTrack').innerHTML=BESTSELLERS.map(b=>{const p=PRODUCTS.find(x=>x.id===b[0]);return `<article class="best-card"><img src="${p.img}" alt="${p.name}" loading="lazy"><span class="rank">No.${b[1]}</span><div class="body"><p class="stars">★★★★★</p><h3>${p.name}</h3><p>${b[3]}</p><strong>${b[2]} orders · ${money(p.price)}</strong></div></article>`}).join('');
+  $('#bestTrack').innerHTML=BESTSELLERS.map(b=>{const p=PRODUCTS.find(x=>x.id===b[0]);return `<article class="best-card"><img src="imags/${p.id}.png" alt="${p.name}" loading="lazy"><span class="rank">No.${b[1]}</span><div class="body"><p class="stars">★★★★★</p><h3>${p.name}</h3><p>${b[3]}</p><strong>${b[2]} orders · ${money(p.price)}</strong></div></article>`}).join('');
 }
 
 function renderGalleries(){
@@ -166,7 +166,7 @@ function openSize(id){
   pending=PRODUCTS.find(p=>p.id===id);size='md';
   $('#modalName').textContent=pending.name;
   $('#modalSub').textContent=pending.desc;
-  $('#modalArt').innerHTML=`<img src="${pending.img}" alt="${pending.name}">`;
+  $('#modalArt').innerHTML=`<img src="imags/${pending.id}.png" alt="${pending.name}">`;
   renderSize();$('#sizeModal').classList.add('open');$('#modalClose').focus();
 }
 
