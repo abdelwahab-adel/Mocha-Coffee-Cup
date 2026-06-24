@@ -76,8 +76,32 @@ const PRODUCTS = PRODUCTS_RAW.map(p => ({ ...p, img: resolveImg(p) }));
 
 const BESTSELLERS=[['gold-standard','01','2,400','Double ristretto, oat milk, raw honey, orange peel.'],['bond-street','02','1,980','Shaken espresso, vanilla bean, cream floated on top.'],['cold-brew','03','1,640','Steeped 18 hours. The bar standard for an iced coffee.'],['flat-white','04','1,390','Ristretto, silky milk. The drink our baristas drink.'],['caramel-latte','05','2,400+','A silky caramel dream from the second concept.']];
 
-const GALLERY=[['https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=85&w=900','The morning ritual · 06/2025'],['https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=85&w=700','Beans · 03/2025'],['https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=85&w=700','The window · 07/2024']];
-
+const GALLERY = [
+  [
+    'https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=85&w=900',
+    'The morning ritual · 06/2025'
+  ],
+  [
+    'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=85&w=900',
+    'Crafted espresso · 05/2025'
+  ],
+  [
+    'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=85&w=900',
+    'Golden latte · 04/2025'
+  ],
+  [
+    'https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&q=85&w=900',
+    'Coffee break · 03/2025'
+  ],
+  [
+    'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&q=85&w=900',
+    'Fresh roast · 02/2025'
+  ],
+  [
+    'https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&q=85&w=900',
+    'Brewed perfection · 01/2025'
+  ]
+];
 const IG=['https://images.unsplash.com/photo-1531441802565-2948024f1b22?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1761271046396-97d231b59dd7?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1756382955872-a0a4dcf96007?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1712251769294-16163363ebef?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1676506739319-70bff65bfc48?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1668095736406-3131fa7ade05?auto=format&fit=crop&q=80&w=420'];
 
 const TESTIMONIALS=[['Sophia Reinhart','Daily regular · 4 years','I\'ve been to cafés in Paris, Tokyo, and Stockholm. This one has something none of them had — it feels like the barista actually knows me.'],['James Kowalski','Food editor, Eater NY','The Gold Standard is genuinely the best espresso drink I\'ve had in the city. I do not say that lightly — I write about coffee for a living.'],['Aisha Mahmood','Writer · mornings','Quiet. Considered. The playlist is good, the lighting is right, and nobody rushes you out the door. That is rare in New York.'],['Marcus T.','Regular · 340 visits','The Caramel Latte here is genuinely life-changing. I come every morning and it makes my whole day better.'],['Daniel F.','Startup Founder','I brought my team here for a meeting and we ended up staying three hours. The space, coffee, and service create a mood that inspires you.']];
