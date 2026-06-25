@@ -30,45 +30,45 @@ function resolveImg(product) {
 
 /* ── Products (img resolved at runtime) ── */
 const PRODUCTS_RAW=[
-{id:'espresso',name:'Classic Espresso',desc:'Double shot of our house blend. Pure, pulled short, no apology.',price:115,cat:'espresso',notes:['Bold','Short'],rating:4.7},
-{id:'macchiato',name:'Espresso Macchiato',desc:'A shot marked with a spoonful of microfoam. Small, deliberate.',price:125,cat:'espresso',notes:['Small','Strong'],rating:4.6},
-{id:'cappuccino',name:'Cappuccino',desc:'Espresso, steamed milk, microfoam. Equal parts, served warm.',price:165,cat:'milk',notes:['Balanced','Warm'],rating:4.8,badge:'Popular'},
-{id:'flat-white',name:'Flat White',desc:'Ristretto, silky milk, no foam ceremony. Intensely comforting.',price:175,cat:'milk',notes:['Intense','Silky'],rating:4.8},
-{id:'latte',name:'House Latte',desc:'Espresso, steamed milk, a small pour of raw honey on request.',price:185,cat:'milk',notes:['Smooth','Honey'],rating:4.6},
-{id:'caramel-latte',name:'Caramel Latte ice',desc:'Drizzled caramel, smooth espresso, velvety steamed milk.',price:175,cat:'cold',notes:['Caramel','Silky'],rating:4.9,badge:'Bestseller'},
-{id:'mocha',name:'Mocha',desc:'Espresso, dark cocoa, milk. For the moments you want dessert.',price:200,cat:'milk',notes:['Cocoa','Richer'],rating:4.8},
-{id:'americano',name:'Americano',desc:'Hot water meets espresso, bold and clean. The purist\'s choice.',price:100,cat:'espresso',notes:['Clean','Long'],rating:4.5},
-{id:'v60',name:'V60 Pour Over',desc:'Single-origin, brewed by hand. The clearest expression of origin.',price:185,cat:'brew',notes:['Single origin','Clean'],rating:4.9},
-{id:'chemex',name:'Chemex · Three Cup',desc:'For a slow morning. Thick-bodied, smooth, brewed for three.',price:265,cat:'brew',notes:['Slow','Shared'],rating:4.7},
-{id:'cold-brew',name:'Cold Brew',desc:'Steeped 18 hours, served over one large cube. Zero bitterness.',price:185,cat:'cold',notes:['Smooth','Cold'],rating:4.8,badge:'New'},
-{id:'nitro',name:'Nitro Cold Brew',desc:'Cold brew on nitrogen. Cascading, creamy, slightly sweet.',price:215,cat:'cold',notes:['Creamy','Nitro'],rating:4.7},
-{id:'iced-latte',name:'Iced Latte',desc:'Espresso, cold milk, one large cube. Built over ice, not stirred.',price:195,cat:'cold',notes:['Cold','Bright'],rating:4.6},
-{id:'affogato',name:'Affogato',desc:'Hot espresso over vanilla bean gelato. A small dessert, no spoon.',price:225,cat:'cold',notes:['Dessert','Hot+Cold'],rating:4.9},
-{id:'gold-standard',name:'The Gold Standard',desc:'Double ristretto, oat milk, raw honey, orange peel. Our most ordered drink of 2025.',price:225,cat:'signature',notes:['Honey','Orange'],rating:4.9,badge:'Signature'},
-{id:'zamalek',name:'The Zamalek',desc:'Shaken espresso, cardamom, vanilla bean, cream floated on top. Served tall over one large cube.',price:215,cat:'signature',notes:['Cardamom','Vanilla'],rating:4.8,badge:'Zamalek'},
-{id:'after-hours',name:'The After Hours',desc:'Cold brew concentrate, tonic, blood orange, rosemary. A coffee for people who say they do not drink coffee.',price:235,cat:'signature',notes:['Tonic','Rosemary'],rating:4.8},
-{id:'gold-rush',name:'The Gold Rush',desc:'Espresso, turmeric, oat milk, honey, and a pinch of black pepper.',price:225,cat:'signature',notes:['Turmeric','Honey'],rating:4.9,badge:'Second Draft'},
-{id:'ristretto',name:'Ristretto',desc:'Shorter pull, more concentrated than espresso. Intensely sweet, zero bitterness.',price:125,cat:'espresso',notes:['Concentrated','Sweet'],rating:4.8},
-{id:'double-espresso',name:'Double Espresso',desc:'Two shots, one ceramic. The honest way to start the day.',price:150,cat:'espresso',notes:['Double','Bold'],rating:4.7},
-{id:'lungo',name:'Lungo',desc:'Espresso pulled long — more water, more body, a slower sip.',price:135,cat:'espresso',notes:['Long','Mild'],rating:4.5},
-{id:'cortado',name:'Cortado',desc:'Equal parts espresso and warm milk. No frills, no foam — pure balance.',price:150,cat:'milk',notes:['Balanced','Strong'],rating:4.7},
-{id:'breve',name:'Breve Latte',desc:'Espresso with half-and-half instead of milk. Rich, indulgent, velvety.',price:215,cat:'milk',notes:['Rich','Creamy'],rating:4.6},
-{id:'oat-latte',name:'Oat Milk Latte',desc:'Our house espresso with Oatly barista. Naturally sweet, dairy-free.',price:215,cat:'milk',notes:['Oat','Dairy-free'],rating:4.8,badge:'Vegan'},
-{id:'pistachio-latte',name:'Pistachio Latte',desc:'House-made pistachio cream, espresso, silky steamed milk. Nutty and layered.',price:235,cat:'milk',notes:['Pistachio','Layered'],rating:4.9,badge:'Seasonal'},
-{id:'french-press',name:'French Press',desc:'Four-minute steep, full immersion, nothing filtered out. Coffee at its boldest.',price:225,cat:'brew',notes:['Full body','Immersion'],rating:4.6},
-{id:'aeropress',name:'AeroPress',desc:'Pressure-brewed in 90 seconds. Clean, bright, remarkably smooth.',price:175,cat:'brew',notes:['Pressure','Bright'],rating:4.7},
-{id:'drip',name:'Batch Brew · Drip',desc:'Fresh drip every 30 minutes. Light roast, consistently clean.',price:100,cat:'brew',notes:['Light','Consistent'],rating:4.4},
-{id:'siphon',name:'Siphon Brew',desc:'Vacuum-pot theater brewed at the bar. Theatric, tea-like clarity.',price:325,cat:'brew',notes:['Theatrical','Clear'],rating:4.9,badge:'Rare'},
-{id:'iced-americano',name:'Iced Americano',desc:'Two shots over ice, topped with cold water. Simple, sharp, essential.',price:135,cat:'cold',notes:['Sharp','Simple'],rating:4.5},
-{id:'iced-cappuccino',name:'Iced Cappuccino',desc:'Shaken espresso, cold foam spooned on top. Light and airy over ice.',price:185,cat:'cold',notes:['Shaken','Foamy'],rating:4.6},
-{id:'frappe',name:'Classic Frappé',desc:'Blended cold brew, milk, ice. Thick, refreshing, unapologetically good.',price:225,cat:'cold',notes:['Blended','Thick'],rating:4.7},
-{id:'cold-foam-latte',name:'Cold Foam Latte',desc:'Iced espresso topped with whipped cold foam. Every sip is two textures.',price:215,cat:'cold',notes:['Cold Foam','Layered'],rating:4.8,badge:'New'},
-{id:'spanish-latte',name:'Spanish Latte',desc:'Condensed milk, espresso, steamed milk. Sweeter and richer than you expect.',price:215,cat:'signature',notes:['Condensed','Sweet'],rating:4.9},
-{id:'honey-cinnamon',name:'Honey Cinnamon Latte',desc:'Ceylon cinnamon syrup, raw honey, espresso, oat milk. A warm hug in a cup.',price:225,cat:'signature',notes:['Cinnamon','Honey'],rating:4.8},
-{id:'brown-sugar-oat',name:'Brown Sugar Oat Shaken',desc:'Shaken espresso, brown sugar syrup, oat milk poured over ice. Sweetly obsessive.',price:235,cat:'signature',notes:['Brown Sugar','Shaken'],rating:4.9,badge:'Fan Fave'},
-{id:'lavender-latte',name:'Lavender Latte',desc:'House lavender simple syrup, double espresso, steamed oat milk. Floral, calm, sophisticated.',price:235,cat:'signature',notes:['Lavender','Floral'],rating:4.7},
-{id:'maple-pecan',name:'Maple Pecan Latte',desc:'Toasted pecan butter, Vermont maple, espresso. Autumn in a tall glass.',price:235,cat:'signature',notes:['Maple','Pecan'],rating:4.8,badge:'Limited'},
-{id:'cold-brew-tonic',name:'Cold Brew Tonic',desc:'Cold brew over sparkling tonic water, lime peel. Effervescent, bitter-bright, refreshing.',price:200,cat:'cold',notes:['Sparkling','Citrus'],rating:4.6},
+{id:'espresso',name:'Classic Espresso',desc:'Double shot of our house blend. Pure, pulled short, no apology.',price:65,cat:'espresso',notes:['Bold','Short'],rating:4.7},
+{id:'macchiato',name:'Espresso Macchiato',desc:'A shot marked with a spoonful of microfoam. Small, deliberate.',price:75,cat:'espresso',notes:['Small','Strong'],rating:4.6},
+{id:'cappuccino',name:'Cappuccino',desc:'Espresso, steamed milk, microfoam. Equal parts, served warm.',price:115,cat:'milk',notes:['Balanced','Warm'],rating:4.8,badge:'Popular'},
+{id:'flat-white',name:'Flat White',desc:'Ristretto, silky milk, no foam ceremony. Intensely comforting.',price:125,cat:'milk',notes:['Intense','Silky'],rating:4.8},
+{id:'latte',name:'House Latte',desc:'Espresso, steamed milk, a small pour of raw honey on request.',price:135,cat:'milk',notes:['Smooth','Honey'],rating:4.6},
+{id:'caramel-latte',name:'Caramel Latte ice',desc:'Drizzled caramel, smooth espresso, velvety steamed milk.',price:125,cat:'cold',notes:['Caramel','Silky'],rating:4.9,badge:'Bestseller'},
+{id:'mocha',name:'Mocha',desc:'Espresso, dark cocoa, milk. For the moments you want dessert.',price:150,cat:'milk',notes:['Cocoa','Richer'],rating:4.8},
+{id:'americano',name:'Americano',desc:'Hot water meets espresso, bold and clean. The purist\'s choice.',price:50,cat:'espresso',notes:['Clean','Long'],rating:4.5},
+{id:'v60',name:'V60 Pour Over',desc:'Single-origin, brewed by hand. The clearest expression of origin.',price:135,cat:'brew',notes:['Single origin','Clean'],rating:4.9},
+{id:'chemex',name:'Chemex · Three Cup',desc:'For a slow morning. Thick-bodied, smooth, brewed for three.',price:215,cat:'brew',notes:['Slow','Shared'],rating:4.7},
+{id:'cold-brew',name:'Cold Brew',desc:'Steeped 18 hours, served over one large cube. Zero bitterness.',price:135,cat:'cold',notes:['Smooth','Cold'],rating:4.8,badge:'New'},
+{id:'nitro',name:'Nitro Cold Brew',desc:'Cold brew on nitrogen. Cascading, creamy, slightly sweet.',price:165,cat:'cold',notes:['Creamy','Nitro'],rating:4.7},
+{id:'iced-latte',name:'Iced Latte',desc:'Espresso, cold milk, one large cube. Built over ice, not stirred.',price:145,cat:'cold',notes:['Cold','Bright'],rating:4.6},
+{id:'affogato',name:'Affogato',desc:'Hot espresso over vanilla bean gelato. A small dessert, no spoon.',price:175,cat:'cold',notes:['Dessert','Hot+Cold'],rating:4.9},
+{id:'gold-standard',name:'The Gold Standard',desc:'Double ristretto, oat milk, raw honey, orange peel. Our most ordered drink of 2025.',price:175,cat:'signature',notes:['Honey','Orange'],rating:4.9,badge:'Signature'},
+{id:'zamalek',name:'The Zamalek',desc:'Shaken espresso, cardamom, vanilla bean, cream floated on top. Served tall over one large cube.',price:165,cat:'signature',notes:['Cardamom','Vanilla'],rating:4.8,badge:'Zamalek'},
+{id:'after-hours',name:'The After Hours',desc:'Cold brew concentrate, tonic, blood orange, rosemary. A coffee for people who say they do not drink coffee.',price:185,cat:'signature',notes:['Tonic','Rosemary'],rating:4.8},
+{id:'gold-rush',name:'The Gold Rush',desc:'Espresso, turmeric, oat milk, honey, and a pinch of black pepper.',price:175,cat:'signature',notes:['Turmeric','Honey'],rating:4.9,badge:'Second Draft'},
+{id:'ristretto',name:'Ristretto',desc:'Shorter pull, more concentrated than espresso. Intensely sweet, zero bitterness.',price:75,cat:'espresso',notes:['Concentrated','Sweet'],rating:4.8},
+{id:'double-espresso',name:'Double Espresso',desc:'Two shots, one ceramic. The honest way to start the day.',price:100,cat:'espresso',notes:['Double','Bold'],rating:4.7},
+{id:'lungo',name:'Lungo',desc:'Espresso pulled long — more water, more body, a slower sip.',price:85,cat:'espresso',notes:['Long','Mild'],rating:4.5},
+{id:'cortado',name:'Cortado',desc:'Equal parts espresso and warm milk. No frills, no foam — pure balance.',price:100,cat:'milk',notes:['Balanced','Strong'],rating:4.7},
+{id:'breve',name:'Breve Latte',desc:'Espresso with half-and-half instead of milk. Rich, indulgent, velvety.',price:165,cat:'milk',notes:['Rich','Creamy'],rating:4.6},
+{id:'oat-latte',name:'Oat Milk Latte',desc:'Our house espresso with Oatly barista. Naturally sweet, dairy-free.',price:165,cat:'milk',notes:['Oat','Dairy-free'],rating:4.8,badge:'Vegan'},
+{id:'pistachio-latte',name:'Pistachio Latte',desc:'House-made pistachio cream, espresso, silky steamed milk. Nutty and layered.',price:185,cat:'milk',notes:['Pistachio','Layered'],rating:4.9,badge:'Seasonal'},
+{id:'french-press',name:'French Press',desc:'Four-minute steep, full immersion, nothing filtered out. Coffee at its boldest.',price:175,cat:'brew',notes:['Full body','Immersion'],rating:4.6},
+{id:'aeropress',name:'AeroPress',desc:'Pressure-brewed in 90 seconds. Clean, bright, remarkably smooth.',price:125,cat:'brew',notes:['Pressure','Bright'],rating:4.7},
+{id:'drip',name:'Batch Brew · Drip',desc:'Fresh drip every 30 minutes. Light roast, consistently clean.',price:50,cat:'brew',notes:['Light','Consistent'],rating:4.4},
+{id:'siphon',name:'Siphon Brew',desc:'Vacuum-pot theater brewed at the bar. Theatric, tea-like clarity.',price:275,cat:'brew',notes:['Theatrical','Clear'],rating:4.9,badge:'Rare'},
+{id:'iced-americano',name:'Iced Americano',desc:'Two shots over ice, topped with cold water. Simple, sharp, essential.',price:85,cat:'cold',notes:['Sharp','Simple'],rating:4.5},
+{id:'iced-cappuccino',name:'Iced Cappuccino',desc:'Shaken espresso, cold foam spooned on top. Light and airy over ice.',price:135,cat:'cold',notes:['Shaken','Foamy'],rating:4.6},
+{id:'frappe',name:'Classic Frappé',desc:'Blended cold brew, milk, ice. Thick, refreshing, unapologetically good.',price:175,cat:'cold',notes:['Blended','Thick'],rating:4.7},
+{id:'cold-foam-latte',name:'Cold Foam Latte',desc:'Iced espresso topped with whipped cold foam. Every sip is two textures.',price:165,cat:'cold',notes:['Cold Foam','Layered'],rating:4.8,badge:'New'},
+{id:'spanish-latte',name:'Spanish Latte',desc:'Condensed milk, espresso, steamed milk. Sweeter and richer than you expect.',price:165,cat:'signature',notes:['Condensed','Sweet'],rating:4.9},
+{id:'honey-cinnamon',name:'Honey Cinnamon Latte',desc:'Ceylon cinnamon syrup, raw honey, espresso, oat milk. A warm hug in a cup.',price:175,cat:'signature',notes:['Cinnamon','Honey'],rating:4.8},
+{id:'brown-sugar-oat',name:'Brown Sugar Oat Shaken',desc:'Shaken espresso, brown sugar syrup, oat milk poured over ice. Sweetly obsessive.',price:185,cat:'signature',notes:['Brown Sugar','Shaken'],rating:4.9,badge:'Fan Fave'},
+{id:'lavender-latte',name:'Lavender Latte',desc:'House lavender simple syrup, double espresso, steamed oat milk. Floral, calm, sophisticated.',price:185,cat:'signature',notes:['Lavender','Floral'],rating:4.7},
+{id:'maple-pecan',name:'Maple Pecan Latte',desc:'Toasted pecan butter, Vermont maple, espresso. Autumn in a tall glass.',price:185,cat:'signature',notes:['Maple','Pecan'],rating:4.8,badge:'Limited'},
+{id:'cold-brew-tonic',name:'Cold Brew Tonic',desc:'Cold brew over sparkling tonic water, lime peel. Effervescent, bitter-bright, refreshing.',price:150,cat:'cold',notes:['Sparkling','Citrus'],rating:4.6},
 ];
 
 /* Patch img onto every product via the smart resolver */
@@ -158,9 +158,7 @@ function renderMenu(filter,query){
   observeReveals();
 }
 
-function renderOrder(){
-  $('#orderList').innerHTML=PRODUCTS.map(p=>`<article class="order-item"><img src="imags/${p.id}.png" alt="${p.name}" loading="lazy"><div><h4>${p.name}</h4><p>${p.desc.split('.')[0]}.</p></div><button class="btn btn-outline" data-add="${p.id}">${money(p.price)}</button></article>`).join('');
-}
+
 
 function renderBest(){
   $('#bestTrack').innerHTML=BESTSELLERS.map(b=>{const p=PRODUCTS.find(x=>x.id===b[0]);return `<article class="best-card"><img src="imags/${p.id}.png" alt="${p.name}" loading="lazy"><span class="rank">No.${b[1]}</span><div class="body"><p class="stars">★★★★★</p><h3>${p.name}</h3><p>${b[3]}</p><strong>${b[2]} orders · ${money(p.price)}</strong></div></article>`}).join('');
@@ -250,7 +248,20 @@ function applyCoupon(){
   toast('Coupon applied — '+found.desc);
 }
 
+/* ===== Cart Drawer ===== */
+function openCartDrawer(){
+  $('#cartDrawer').classList.add('open');
+  $('#cartOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeCartDrawer(){
+  $('#cartDrawer').classList.remove('open');
+  $('#cartOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
 /* ===== Cart ===== */
+const cartLines=i=>`<div class="cart-line"><div><strong>${i.name}</strong><br><small>${i.size} · ${money(i.price)}</small><div class="qty"><button data-dec="${i.key}" aria-label="Decrease ${i.name}">−</button><span>${i.qty}</span><button data-inc="${i.key}" aria-label="Increase ${i.name}">+</button></div></div><strong>${money(i.qty*i.price)}</strong></div>`;
 function updateCart(){
   let count=cart.reduce((a,i)=>a+i.qty,0),sub=cart.reduce((a,i)=>a+i.qty*i.price,0);
   const disc=calcDiscount(sub);
@@ -258,17 +269,25 @@ function updateCart(){
   const tax=taxable*.08,total=taxable+tax;
   $('#cartCount').textContent=count;$('#stickyCartCount').textContent=count;
   $('#cartDot').hidden=!count;$('#cartDot').textContent=count;
-  $('#cartBody').innerHTML=count?cart.map(i=>`<div class="cart-line"><div><strong>${i.name}</strong><br><small>${i.size} · ${money(i.price)}</small><div class="qty"><button data-dec="${i.key}" aria-label="Decrease ${i.name}">−</button><span>${i.qty}</span><button data-inc="${i.key}" aria-label="Increase ${i.name}">+</button></div></div><strong>${money(i.qty*i.price)}</strong></div>`).join(''):'<p class="muted">Your cart is empty. Add something from the list.</p>';
+  const lines=count?cart.map(cartLines).join(''):'<p class="muted">Your cart is empty. Add something from the list.</p>';
+  // sync both inline cart and drawer
+  $('#cartBody').innerHTML=lines;
+  if($('#cartBody2'))$('#cartBody2').innerHTML=lines;
   $('#subTotal').textContent=money(sub);
   $('#taxTotal').textContent=money(tax);
   $('#grandTotal').textContent=money(total);
-  const row=$('#couponRow');
+  if($('#subTotal2'))$('#subTotal2').textContent=money(sub);
+  if($('#taxTotal2'))$('#taxTotal2').textContent=money(tax);
+  if($('#grandTotal2'))$('#grandTotal2').textContent=money(total);
+  const row=$('#couponRow'),row2=$('#couponRow2');
   if(activeCoupon&&disc>0){
     $('#couponLabel').textContent=activeCoupon.label;
     $('#couponSaving').textContent='-'+money(disc);
     row.hidden=false;
+    if(row2){$('#couponLabel2').textContent=activeCoupon.label;$('#couponSaving2').textContent='-'+money(disc);row2.hidden=false;}
   }else{
     row.hidden=true;
+    if(row2)row2.hidden=true;
   }
 }
 
@@ -364,9 +383,16 @@ $$('.filter').forEach(b=>b.addEventListener('click',()=>{$$('.filter').forEach(x
 })();
 $('#couponApply').addEventListener('click',applyCoupon);
 $('#couponInput').addEventListener('keydown',e=>{if(e.key==='Enter')applyCoupon()});
+// drawer coupon mirrors main coupon
+if($('#couponApply2')){
+  $('#couponApply2').addEventListener('click',()=>{$('#couponInput').value=$('#couponInput2').value;applyCoupon();$('#couponInput2').value=$('#couponInput').value;});
+  $('#couponInput2').addEventListener('keydown',e=>{if(e.key==='Enter'){$('#couponInput').value=$('#couponInput2').value;applyCoupon();}});
+}
 $('#mobileNav').addEventListener('click',e=>{if(e.target.tagName==='A')$('#mobileNav').classList.remove('open')});
-$('#cartChip').addEventListener('click',()=>location.hash='order');
-$('#stickyCart').addEventListener('click',()=>location.hash='order');
+$('#cartChip').addEventListener('click',openCartDrawer);
+$('#stickyCart').addEventListener('click',openCartDrawer);
+$('#cartDrawerClose').addEventListener('click',closeCartDrawer);
+$('#cartOverlay').addEventListener('click',closeCartDrawer);
 $('#backTop').addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 $('#modalClose').addEventListener('click',()=>$('#sizeModal').classList.remove('open'));
 $('#modalAdd').addEventListener('click',addPending);
@@ -374,9 +400,10 @@ $('#sizeModal').addEventListener('click',e=>{if(e.target.id==='sizeModal')$('#si
 $('#lightboxClose').addEventListener('click',()=>$('#lightbox').classList.remove('open'));
 $('#lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')$('#lightbox').classList.remove('open')});
 $('#checkoutBtn').addEventListener('click',()=>toast(cart.length?'Order placed for pickup.':'Please add items first.'));
+$('#checkoutBtn2').addEventListener('click',()=>{if(cart.length){toast('Order placed for pickup.');closeCartDrawer();}else toast('Please add items first.')});
 $('#newsletterForm').addEventListener('submit',e=>{e.preventDefault();toast('Subscribed to Field Notes.');e.target.reset()});
 $$('.faq-q').forEach(b=>b.addEventListener('click',()=>b.closest('.faq-item').classList.toggle('open')));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#sizeModal').classList.remove('open');$('#lightbox').classList.remove('open')}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#sizeModal').classList.remove('open');$('#lightbox').classList.remove('open');closeCartDrawer();}});
 
 /* ===== Init ===== */
-renderMenu();renderOrder();renderBest();renderGalleries();renderTestimonials();updateCart();countdown();setInterval(countdown,1000);observeReveals();initNav();animateStats();
+renderMenu();renderBest();renderGalleries();renderTestimonials();updateCart();countdown();setInterval(countdown,1000);observeReveals();initNav();animateStats();
