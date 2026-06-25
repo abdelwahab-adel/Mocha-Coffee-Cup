@@ -111,10 +111,50 @@ const SIZES=[{id:'sm',label:'Small',delta:-.5},{id:'md',label:'Regular',delta:0}
 let cart=[],pending=null,size='md';
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s),money=n=>'$'+n.toFixed(2);
 
+/* ===== Search helpers ===== */
+let _searchQuery='',_activeFilter='all';
+
+function highlight(text,query){
+  if(!query)return text;
+  const esc=query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  return text.replace(new RegExp(`(${esc})`,'gi'),'<mark class="search-highlight">$1</mark>');
+}
+
 /* ===== Renderers ===== */
-function renderMenu(filter='all'){
-  const items=filter==='all'?PRODUCTS:PRODUCTS.filter(p=>p.cat===filter);
-  $('#menuGrid').innerHTML=items.map(p=>`<article class="menu-card reveal" data-cat="${p.cat}"><div class="menu-img"><img src="imags/${p.id}.png" alt="${p.name}" loading="lazy" decoding="async">${p.badge?`<span class="badge">${p.badge}</span>`:''}<button class="menu-quick" data-add="${p.id}" aria-label="Quick add ${p.name}">+</button></div><div class="menu-body"><div class="menu-top"><h3>${p.name}</h3><span class="rating">★ ${p.rating.toFixed(1)}</span></div><p>${p.desc}</p><div class="notes">${p.notes.map(n=>`<span>${n}</span>`).join('')}</div><div class="menu-foot"><span class="price">${money(p.price)}</span><button class="add-btn" aria-label="Add ${p.name}" data-add="${p.id}">+</button></div></div></article>`).join('');
+function renderMenu(filter,query){
+  if(filter!==undefined)_activeFilter=filter;
+  if(query!==undefined)_searchQuery=query;
+  const q=_searchQuery.trim().toLowerCase();
+  let items=_activeFilter==='all'?PRODUCTS:PRODUCTS.filter(p=>p.cat===_activeFilter);
+  if(q){
+    items=items.filter(p=>
+      p.name.toLowerCase().includes(q)||
+      p.desc.toLowerCase().includes(q)||
+      p.notes.some(n=>n.toLowerCase().includes(q))||
+      (p.badge&&p.badge.toLowerCase().includes(q))
+    );
+  }
+  const noR=$('#noResults'),cnt=$('#searchCount');
+  if(items.length===0&&q){
+    $('#menuGrid').innerHTML='';
+    $('#noResultsQuery').textContent=_searchQuery;
+    noR.hidden=false;
+    cnt.hidden=true;
+  }else{
+    noR.hidden=true;
+    $('#menuGrid').innerHTML=items.map(p=>{
+      const name=highlight(p.name,q);
+      const desc=highlight(p.desc,q);
+      const notes=p.notes.map(n=>`<span>${highlight(n,q)}</span>`).join('');
+      return `<article class="menu-card reveal" data-cat="${p.cat}"><div class="menu-img"><img src="imags/${p.id}.png" alt="${p.name}" loading="lazy" decoding="async">${p.badge?`<span class="badge">${p.badge}</span>`:''}<button class="menu-quick" data-add="${p.id}" aria-label="Quick add ${p.name}">+</button></div><div class="menu-body"><div class="menu-top"><h3>${name}</h3><span class="rating">★ ${p.rating.toFixed(1)}</span></div><p>${desc}</p><div class="notes">${notes}</div><div class="menu-foot"><span class="price">${money(p.price)}</span><button class="add-btn" aria-label="Add ${p.name}" data-add="${p.id}">+</button></div></div></article>`;
+    }).join('');
+    if(q){
+      cnt.innerHTML=`<em>${items.length}</em> drink${items.length!==1?'s':''} found for "<em>${_searchQuery}</em>"`;
+      cnt.hidden=false;
+    }else{
+      cnt.hidden=true;
+    }
+  }
   observeReveals();
 }
 
@@ -247,6 +287,18 @@ document.addEventListener('click',e=>{
 });
 
 $$('.filter').forEach(b=>b.addEventListener('click',()=>{$$('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderMenu(b.dataset.filter)}));
+
+/* ===== Search ===== */
+(function initSearch(){
+  const inp=$('#menuSearch'),clr=$('#searchClear');
+  function doSearch(){
+    const q=inp.value;
+    clr.hidden=!q;
+    renderMenu(undefined,q);
+  }
+  inp.addEventListener('input',doSearch);
+  clr.addEventListener('click',()=>{inp.value='';clr.hidden=true;inp.focus();renderMenu(undefined,'');});
+})();
 $('#menuToggle').addEventListener('click',()=>{const open=$('#mobileNav').classList.toggle('open');$('#menuToggle').setAttribute('aria-expanded',open)});
 $('#mobileNav').addEventListener('click',e=>{if(e.target.tagName==='A')$('#mobileNav').classList.remove('open')});
 $('#cartChip').addEventListener('click',()=>location.hash='order');

@@ -663,6 +663,15 @@
       </div>
       <p class="lede">A short, deliberate list. Espresso, milk, slow brew, cold, signature — all pulled by hand, never pre-made, never on autopilot.</p>
     </div>
+    <div class="menu-search-wrap">
+      <label class="sr-only" for="menuSearch">Search drinks</label>
+      <div class="menu-search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="menuSearch" type="search" placeholder="Search drinks… e.g. latte, cold brew, honey" autocomplete="off" spellcheck="false">
+        <button class="search-clear" id="searchClear" aria-label="Clear search" hidden>✕</button>
+      </div>
+      <p class="search-count" id="searchCount" aria-live="polite" hidden></p>
+    </div>
     <div class="menu-tools" role="tablist" aria-label="Menu filters">
       <button class="filter active" data-filter="all">All</button>
       <button class="filter" data-filter="espresso">Espresso</button>
@@ -672,6 +681,11 @@
       <button class="filter" data-filter="signature">Signature</button>
     </div>
     <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
+    <div class="no-results" id="noResults" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <p>No drinks found for "<span id="noResultsQuery"></span>"</p>
+      <small>Try a different keyword or browse by category above.</small>
+    </div>
   </div>
 </section>
 
