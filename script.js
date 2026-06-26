@@ -58,7 +58,7 @@ const PRODUCTS_RAW=[
 {id:'french-press',name:'French Press',desc:'Four-minute steep, full immersion, nothing filtered out. Coffee at its boldest.',price:175,cat:'brew',notes:['Full body','Immersion'],rating:4.6},
 {id:'aeropress',name:'AeroPress',desc:'Pressure-brewed in 90 seconds. Clean, bright, remarkably smooth.',price:125,cat:'brew',notes:['Pressure','Bright'],rating:4.7},
 {id:'drip',name:'Batch Brew · Drip',desc:'Fresh drip every 30 minutes. Light roast, consistently clean.',price:50,cat:'brew',notes:['Light','Consistent'],rating:4.4},
-{id:'siphon',name:'Siphon Brew',desc:'Vacuum-pot theater brewed at the bar. Theatric, tea-like clarity.',price:275,cat:'brew',notes:['Theatrical','Clear'],rating:4.9,badge:'Rare'},
+{id:'siphon',name:'Siphon Brew',desc:'Vacuum-pot theater brewed at the Cafe. Theatric, tea-like clarity.',price:275,cat:'brew',notes:['Theatrical','Clear'],rating:4.9,badge:'Rare'},
 {id:'iced-americano',name:'Iced Americano',desc:'Two shots over ice, topped with cold water. Simple, sharp, essential.',price:85,cat:'cold',notes:['Sharp','Simple'],rating:4.5},
 {id:'iced-cappuccino',name:'Iced Cappuccino',desc:'Shaken espresso, cold foam spooned on top. Light and airy over ice.',price:135,cat:'cold',notes:['Shaken','Foamy'],rating:4.6},
 {id:'frappe',name:'Classic Frappé',desc:'Blended cold brew, milk, ice. Thick, refreshing, unapologetically good.',price:175,cat:'cold',notes:['Blended','Thick'],rating:4.7},
@@ -74,7 +74,7 @@ const PRODUCTS_RAW=[
 /* Patch img onto every product via the smart resolver */
 const PRODUCTS = PRODUCTS_RAW.map(p => ({ ...p, img: resolveImg(p) }));
 
-const BESTSELLERS=[['mocha','01','2,400','Double ristretto, oat milk, raw honey, orange peel.'],['macchiato','02','1,980','Shaken espresso, cardamom, vanilla bean, cream floated on top.'],['cold-brew','03','1,640','Steeped 18 hours. The bar standard for an iced coffee.'],['flat-white','04','1,390','Ristretto, silky milk. The drink our baristas drink.'],['caramel-latte','05','2,400+','A silky caramel dream from the second concept.']];
+const BESTSELLERS=[['mocha','01','2,400','Double ristretto, oat milk, raw honey, orange peel.'],['macchiato','02','1,980','Shaken espresso, cardamom, vanilla bean, cream floated on top.'],['cold-brew','03','1,640','Steeped 18 hours. The Cafe standard for an iced coffee.'],['flat-white','04','1,390','Ristretto, silky milk. The drink our baristas drink.'],['caramel-latte','05','2,400+','A silky caramel dream from the second concept.']];
 
 const GALLERY = [
   [
@@ -357,7 +357,7 @@ function initNav(){
     header.classList.toggle('scrolled',scrollY>30);
     back.classList.toggle('visible',scrollY>700);
     let idx=0;
-    ['top','story','menu','order','visit'].forEach((id,i)=>{
+    ['main','story','menu','offers','gallery','visit'].forEach((id,i)=>{
       const el=document.getElementById(id);
       if(el&&el.getBoundingClientRect().top<innerHeight*.45)idx=i;
     });
@@ -418,3 +418,26 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#sizeModal').cla
 
 /* ===== Init ===== */
 renderMenu();renderBest();renderGalleries();renderTestimonials();updateCart();countdown();setInterval(countdown,1000);observeReveals();initNav();animateStats();
+
+
+const nav = document.getElementById('mobileNav');
+const toggle = document.getElementById('menuToggle');
+
+/* open / close */
+toggle.addEventListener('click', () => {
+  nav.classList.toggle('open');
+});
+
+/* close on link click */
+nav.addEventListener('click', (e) => {
+  if (e.target.tagName === 'A') {
+    nav.classList.remove('open');
+  }
+});
+
+/* close on ESC */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    nav.classList.remove('open');
+  }
+});
