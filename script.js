@@ -31,7 +31,7 @@ function resolveImg(product) {
 /* ── Products (img resolved at runtime) ── */
 const PRODUCTS_RAW=[
 {id:'espresso',name:'Classic Espresso',desc:'Double shot of our house blend. Pure, pulled short, no apology.',price:65,cat:'espresso',notes:['Bold','Short'],rating:4.7},
-{id:'macchiato',name:'Espresso Macchiato',desc:'A shot marked with a spoonful of microfoam. Small, deliberate.',price:75,cat:'espresso',notes:['Small','Strong'],rating:4.6},
+{id:'macchiato',name:'Espresso Macchiato',desc:'A shot marked with a spoonful of microfoam. Small, deliberate.',price:75,cat:'espresso',notes:['Small','Strong'],rating:4.9},
 {id:'cappuccino',name:'Cappuccino',desc:'Espresso, steamed milk, microfoam. Equal parts, served warm.',price:115,cat:'milk',notes:['Balanced','Warm'],rating:4.8,badge:'Popular'},
 {id:'flat-white',name:'Flat White',desc:'Ristretto, silky milk, no foam ceremony. Intensely comforting.',price:125,cat:'milk',notes:['Intense','Silky'],rating:4.8},
 {id:'latte',name:'House Latte',desc:'Espresso, steamed milk, a small pour of raw honey on request.',price:135,cat:'milk',notes:['Smooth','Honey'],rating:4.6},
@@ -45,7 +45,7 @@ const PRODUCTS_RAW=[
 {id:'iced-latte',name:'Iced Latte',desc:'Espresso, cold milk, one large cube. Built over ice, not stirred.',price:145,cat:'cold',notes:['Cold','Bright'],rating:4.6},
 {id:'affogato',name:'Affogato',desc:'Hot espresso over vanilla bean gelato. A small dessert, no spoon.',price:175,cat:'cold',notes:['Dessert','Hot+Cold'],rating:4.9},
 {id:'gold-standard',name:'The Gold Standard',desc:'Double ristretto, oat milk, raw honey, orange peel. Our most ordered drink of 2025.',price:175,cat:'signature',notes:['Honey','Orange'],rating:4.9,badge:'Signature'},
-{id:'zamalek',name:'The Zamalek',desc:'Shaken espresso, cardamom, vanilla bean, cream floated on top. Served tall over one large cube.',price:165,cat:'signature',notes:['Cardamom','Vanilla'],rating:4.8,badge:'Zamalek'},
+{id:'bond-street',name:'The Bond Street',desc:'Shaken espresso, vanilla bean, cream floated on top. Served tall over one large cube.',price:165,cat:'signature',notes:['Cardamom','Vanilla'],rating:4.8,badge:'Fan Fave'},
 {id:'after-hours',name:'The After Hours',desc:'Cold brew concentrate, tonic, blood orange, rosemary. A coffee for people who say they do not drink coffee.',price:185,cat:'signature',notes:['Tonic','Rosemary'],rating:4.8},
 {id:'gold-rush',name:'The Gold Rush',desc:'Espresso, turmeric, oat milk, honey, and a pinch of black pepper.',price:175,cat:'signature',notes:['Turmeric','Honey'],rating:4.9,badge:'Second Draft'},
 {id:'ristretto',name:'Ristretto',desc:'Shorter pull, more concentrated than espresso. Intensely sweet, zero bitterness.',price:75,cat:'espresso',notes:['Concentrated','Sweet'],rating:4.8},
@@ -74,7 +74,7 @@ const PRODUCTS_RAW=[
 /* Patch img onto every product via the smart resolver */
 const PRODUCTS = PRODUCTS_RAW.map(p => ({ ...p, img: resolveImg(p) }));
 
-const BESTSELLERS=[['gold-standard','01','2,400','Double ristretto, oat milk, raw honey, orange peel.'],['zamalek','02','1,980','Shaken espresso, cardamom, vanilla bean, cream floated on top.'],['cold-brew','03','1,640','Steeped 18 hours. The bar standard for an iced coffee.'],['flat-white','04','1,390','Ristretto, silky milk. The drink our baristas drink.'],['caramel-latte','05','2,400+','A silky caramel dream from the second concept.']];
+const BESTSELLERS=[['mocha','01','2,400','Double ristretto, oat milk, raw honey, orange peel.'],['macchiato','02','1,980','Shaken espresso, cardamom, vanilla bean, cream floated on top.'],['cold-brew','03','1,640','Steeped 18 hours. The bar standard for an iced coffee.'],['flat-white','04','1,390','Ristretto, silky milk. The drink our baristas drink.'],['caramel-latte','05','2,400+','A silky caramel dream from the second concept.']];
 
 const GALLERY = [
   [
@@ -104,8 +104,19 @@ const GALLERY = [
 ];
 const IG=['https://images.unsplash.com/photo-1531441802565-2948024f1b22?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1761271046396-97d231b59dd7?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1756382955872-a0a4dcf96007?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1712251769294-16163363ebef?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1676506739319-70bff65bfc48?auto=format&fit=crop&q=80&w=420','https://images.unsplash.com/photo-1668095736406-3131fa7ade05?auto=format&fit=crop&q=80&w=420'];
 
-const TESTIMONIALS=[['Nour Adel','Daily regular · 4 years','I\'ve been to cafés in Paris, Tokyo, and Stockholm. This one has something none of them had — it feels like the barista actually knows me.'],['Karim Farouk','Food editor, Cairo Foodie','The Gold Standard is genuinely the best espresso drink I\'ve had in the city. I do not say that lightly — I write about coffee for a living.'],['Yasmine Mahmoud','Writer · mornings','Quiet. Considered. The playlist is good, the lighting is right, and nobody rushes you out the door. That is rare in Cairo.'],['Omar Saeed','Regular · 340 visits','The Caramel Latte here is genuinely life-changing. I come every morning and it makes my whole day better.'],['Sherif Nabil','Startup Founder','I brought my team here for a meeting and we ended up staying three hours. The space, coffee, and service create a mood that inspires you.']];
+const TESTIMONIALS=[
+['Nour Adel','Daily regular · 4 years','I\'ve been to cafés in Paris, Tokyo, and Stockholm. This one has something none of them had — it feels like the barista actually knows me.'],
+['Karim Farouk','Food editor, Cairo Foodie','The Gold Standard is genuinely the best espresso drink I\'ve had in the city. I do not say that lightly — I write about coffee for a living.'],
+['Yasmine Mahmoud','Writer · mornings','Quiet. Considered. The playlist is good, the lighting is right, and nobody rushes you out the door. That is rare in Cairo.'],
+['Omar Saeed','Regular · 340 visits','The Caramel Latte here is genuinely life-changing. I come every morning and it makes my whole day better.'],
+['Sherif Nabil','Startup Founder','I brought my team here for a meeting and we ended up staying three hours. The space, coffee, and service create a mood that inspires you.'],
 
+['Hassan El Masry','University Student','Simple place, but the coffee quality is on another level. It became my daily study spot in Cairo.'],
+
+['Mariam Tarek','Photographer','Every corner here feels aesthetic. I always end up taking photos while drinking my coffee.'],
+
+['Ahmed Samir','Freelancer','Strong WiFi, calm vibe, and great espresso — exactly what I need to get my work done.']
+];
 const SIZES=[{id:'sm',label:'Small',delta:-25},{id:'md',label:'Regular',delta:0},{id:'lg',label:'Large',delta:40}];
 
 let cart=[],pending=null,size='md';
