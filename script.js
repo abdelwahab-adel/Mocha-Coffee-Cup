@@ -302,6 +302,36 @@ function updateCart(){
   }
 }
 
+/* ===== WhatsApp Checkout ===== */
+const WHATSAPP_NUMBER = '201068300432'; // Egypt country code prefix
+
+function buildWhatsAppMessage(){
+  if(!cart.length) return null;
+
+  let sub = cart.reduce((a,i)=>a+i.qty*i.price, 0);
+  const disc = calcDiscount(sub);
+  const taxable = Math.max(0, sub - disc);
+  const tax = taxable * 0.08;
+  const total = taxable + tax;
+
+  let lines = cart.map(i=>`• ${i.name} (${i.size}) x${i.qty} — ${money(i.qty*i.price)}`).join('\n');
+  let msg = `🛒 *طلب جديد — Mocha Coffee Cup*\n\n${lines}\n`;
+  if(activeCoupon && disc > 0){
+    msg += `\n🏷️ كوبون (${activeCoupon.label}): -${money(disc)}`;
+  }
+  msg += `\nضريبة (8%): ${money(tax)}`;
+  msg += `\n*الإجمالي: ${money(total)}*`;
+  msg += `\n\n📍 الطلب للاستلام من الكافيه — Zamalek`;
+  return encodeURIComponent(msg);
+}
+
+function checkoutWhatsApp(){
+  if(!cart.length){ toast('Please add items first.'); return; }
+  const msg = buildWhatsAppMessage();
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+  toast('جاري فتح واتساب لإتمام الطلب...');
+}
+
 function toast(msg){
   const t=$('#toast');t.textContent=msg;t.classList.add('show');
   clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove('show'),2400);
@@ -410,8 +440,8 @@ $('#modalAdd').addEventListener('click',addPending);
 $('#sizeModal').addEventListener('click',e=>{if(e.target.id==='sizeModal')$('#sizeModal').classList.remove('open')});
 $('#lightboxClose').addEventListener('click',()=>$('#lightbox').classList.remove('open'));
 $('#lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')$('#lightbox').classList.remove('open')});
-$('#checkoutBtn').addEventListener('click',()=>toast(cart.length?'Order placed for pickup.':'Please add items first.'));
-$('#checkoutBtn2').addEventListener('click',()=>{if(cart.length){toast('Order placed for pickup.');closeCartDrawer();}else toast('Please add items first.')});
+$('#checkoutBtn').addEventListener('click', checkoutWhatsApp);
+$('#checkoutBtn2').addEventListener('click', ()=>{ checkoutWhatsApp(); if(cart.length) closeCartDrawer(); });
 $('#newsletterForm').addEventListener('submit',e=>{e.preventDefault();toast('Subscribed to Field Notes.');e.target.reset()});
 $$('.faq-q').forEach(b=>b.addEventListener('click',()=>b.closest('.faq-item').classList.toggle('open')));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#sizeModal').classList.remove('open');$('#lightbox').classList.remove('open');closeCartDrawer();}});
