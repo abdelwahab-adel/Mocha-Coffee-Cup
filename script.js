@@ -183,7 +183,7 @@ function renderGalleries(){
 function renderTestimonials(){
   $('#testimonialsGrid').innerHTML=TESTIMONIALS.map(t=>{
     const initials=t[0].split(' ').map(s=>s[0]).join('').slice(0,2);
-    return `<article class="testi reveal"><p class="stars">★★★★★</p><blockquote>"${t[2]}"</blockquote><div class="testi-foot"><div class="testi-avatar">${initials}</div><div><p class="person">${t[0]}</p><p class="role">${t[1]}</p></div></div></article>`;
+    return `<article class="testi reveal"><p class="stars">★★★★★</p><blockquote>"${t[2]}"</blockquote><div class="testi-foot"><div><p class="person">${t[0]}</p><p class="role">${t[1]}</p></div></div></article>`;
   }).join('');
 }
 
